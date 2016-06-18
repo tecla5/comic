@@ -1,2 +1,3 @@
 # About this site
-This site has been made by following the Perun guides
+
+Active Group learning awesome projects
