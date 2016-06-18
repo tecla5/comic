@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html><div style="max-width: 900px; margin: 0 auto;"><a href="/">Home</a><h1><a href="#creation-blog" name="creation-blog"></a>Creation blog</h1>
+<h2><a href="#distributed-revision-control-and-source-code-management-scm-" name="distributed-revision-control-and-source-code-management-scm-"></a>distributed revision control and source code management (SCM)</h2>
+<p>creating repository on <a href="https://github.com/">github</a></p>
+<p>CLI commands for github API v3 (replace all CAPS keywords):</p>
+<pre><code>curl -u &#39;USER&#39; https://api.github.com/user/repos -d &#39;{&quot;name&quot;:&quot;REPO&quot;}&#39;
+# Remember replace USER with your username and REPO with your repository/application name!
+git remote add origin git@github.com:USER/REPO.git
+git push origin master
+</code></pre>
+<p>I found the solution here: <a href="http://stackoverflow.com/questions/2423777/is-it-possible-to-create-a-remote-repo-on-github-from-the-cli-without-opening-br">stackoverflow</a></p>
+<p>the result: <a href="https://github.com/tecla5/comic">https://github.com/tecla5/comic</a></p>
+<h2><a href="#decide-to-use-github-pages" name="decide-to-use-github-pages"></a>decide to use github pages</h2>
+<p>we follow this <a href="https://help.github.com/articles/creating-project-pages-manually/">creating gh-pages</a></p>
+<p>the result was this: <a href="http://tecla5.github.io/comic">http://tecla5.github.io/comic</a></p>
+<p>and this <a href="https://help.github.com/articles/using-a-custom-domain-with-github-pages/">custom-domain</a></p>
+<p>and we configure a subdomain <a href="http://comic.tecla5.com/">http://comic.tecla5.com/</a></p>
+<h2><a href="#static-site-generator-blog" name="static-site-generator-blog"></a>static site generator blog</h2>
+<p>we choose the github project <a href="https://github.com/hashobject/perun">perun</a>  and follow the <a href="https://github.com/hashobject/perun/wiki/Getting-Started">Getting-Started</a></p>
+<p>it was the result: <a href="https://github.com/tecla5/comic/commit/778fa6263be445296fc3caed9b7b2b1634e29139">commit</a></p>
+<p><img src="https://cloud.githubusercontent.com/assets/3462917/16172782/9c3d0286-358f-11e6-96c2-5fc38c53940a.png" alt="github image" /></p>
+<p>PD: if you dont want track the images on github <a href="http://solutionoptimist.com/2013/12/28/awesome-github-tricks/">upload images on gh-pages</a></p>
+<h2><a href="#first-post-creation-blog" name="first-post-creation-blog"></a>first post creation blog</h2>
+<p>it is this page it self</p></div></html>
