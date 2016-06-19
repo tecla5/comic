@@ -9,21 +9,25 @@ and even learn writing in markdown
 
 server pandeiro help to serve html
 
-    boot serve -r public watch markdown render -r site.core/page
+    boot dev
 
 open browser
 
-    google-chrome target/public/index.html
+    google-chrome http://localhost:3000
 
 
 ## build
-boot markdown render -r site.core/page target
 
-##publish:
+    boot build
+
+## publish:
+
 
 <!---
 git subtree push --prefix target/public origin gh-pages
 --->
+
+    boot prod
 
     git checkout gh-pages
     sudo cp -r target/public/* .
@@ -41,13 +45,8 @@ git subtree push --prefix target/public origin gh-pages
 [perum](https://github.com/hashobject/perun/wiki/Getting-Started)
 
 
-## useless commands
+## other commands
 
     boot --help
-    boot markdown
-    boot print-meta markdown print-meta
     boot render --help
-    boot markdown render -r site.core/page
-    boot markdown render -r site.core/page target
     boot -h
-    boot serve --resource-root public markdown render -r site.core/page wait

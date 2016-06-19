@@ -9,3 +9,6 @@ and even for learn markdown
 
 ## creation
 How we started this blog! ([creation](/creation.html))
+
+## enhancing
+get more sofisticted the blog with perun ([enhancing](/enhancing.html))
