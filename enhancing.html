@@ -1,3 +1,23 @@
 <!DOCTYPE html>
-<html><div style="max-width: 900px; margin: 0 auto;"><a href="/">Home</a><h1><a href="#enhancing" name="enhancing"></a>enhancing</h1>
-<p>adding tasks to boot</p></div></html>
+<html><div style="max-width: 900px; margin: 0 auto;"><a href="/">Home</a><h1><a href="#enhancing-boot" name="enhancing-boot"></a>enhancing boot</h1>
+<p>we follow enhancing our blog</p>
+<h2><a href="#defining-tasks" name="defining-tasks"></a>defining tasks</h2>
+<p>we defining tasks to boot on the <code>build.boot</code></p>
+<pre><code class="clojure">    (deftask name-task
+      &quot;Some comments.&quot;
+      []
+      clojure.core/identity)
+</code></pre>
+<p>on this way then it is not need to use this large command</p>
+<p>for dev <del>boot serve -r public watch markdown render -r site.core/page</del></p>
+<p>for build <del>boot markdown render -r site.core/page target</del></p>
+<p>now we can use this way:</p>
+<pre><code>boot dev
+boot build
+boot prod
+</code></pre>
+<p>for more info <a href="https://github.com/boot-clj/boot/wiki/Tasks">boot task</a></p>
+<h2><a href="#livereload" name="livereload"></a>livereload</h2>
+<p>we follow this to achieve it <a href="https://github.com/Deraen/boot-livereload">boot livereload</a></p>
+<p><a href="https://chrome.google.com/webstore/detail/livereload/jnihajbhpnppcggbcgedagnkighmdlei">livereload chrome</a></p>
+<p>the last result on shell: <img src="https://cloud.githubusercontent.com/assets/3462917/16180229/bc0cbdcc-367f-11e6-8b23-aa1fb8eada85.png" alt="boot dev" /></p></div></html>
