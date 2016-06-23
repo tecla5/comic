@@ -1,9 +1,11 @@
 (ns site.core
-  (:require [hiccup.page :as hp]))
+  (:use [hiccup.page :only (html5 include-css include-js)]))
 
 
-  (defn page [data]
-    (hp/html5
-     [:div {:style "max-width: 900px; margin: 0 auto;"}
-      [:a {:href "/"} "Home"] ; <---- We added this
-      (-> data :entry :content)]))
+(defn page [data]
+  (html5
+    [:head (include-css "css/garden.css")]
+    [:body
+      [:div {:style "max-width: 900px; margin: 0 auto;"}
+        [:a {:href "/"} "Home"] ; <---- We added this
+        (-> data :entry :content)]]))
