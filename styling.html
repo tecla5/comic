@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html><head><link href="css/garden.css" rel="stylesheet" type="text/css"></head><body><div style="max-width: 900px; margin: 0 auto;"><a href="/">Home</a><h1><a href="#styling-task" name="styling-task"></a>Styling task</h1>
+<p>we adding styling tasks based in garden to boot foloowing this: <a href="https://github.com/martinklepsch/boot-garden">boot-garden</a></p>
+<h2><a href="#adding-the-css-and-references" name="adding-the-css-and-references"></a>Adding the css and references</h2>
+<p>created <code>src/site/styles.clj</code> for styling</p>
+<pre><code class="clojure">(ns site.styles
+  (:require [garden.def :refer [defrule defstyles]]
+            [garden.stylesheet :refer [rule]]))
+
+(defstyles base
+  (let [body (rule :body)]
+    (body {:background-color &quot;beige&quot; ...})
+    ... ))
+</code></pre>
+<p>edited <code>core.clj</code> adding</p>
+<pre><code class="clojure">[:head (include-css &quot;css/garden.css&quot;)]
+</code></pre>
+<h2><a href="#adding-the-task" name="adding-the-task"></a>Adding the task</h2>
+<p>edited <code>build.boot</code> adding</p>
+<p>dependencies:  [org.martinklepsch/boot-garden "1.3.0-0"]</p>
+<p>and defined the task css</p>
+<pre><code class="clojure"><br/>(:dependencies ...  
+                [org.martinklepsch/boot-garden &quot;1.3.0-0&quot;]
+                ... )
+
+; style task
+(deftask css
+  &quot;Generate CSS from Garden and watch for future changes&quot;
+  []
+  (comp (garden :styles-var &#39;site.styles/base :output-to &quot;public/css/garden.css&quot; :pretty-print true)))
+
+</code></pre></div></body></html>
