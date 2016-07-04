@@ -1,6 +1,6 @@
 (set-env!
  :source-paths #{"src" "content"}
-;   :resource-paths #{"resources"}
+ :resource-paths #{"resources"}
  :dependencies '[[perun  "0.3.0" :scope "test"]
                  [pandeiro/boot-http "0.7.0"]
                  [deraen/boot-livereload "0.1.2"]
@@ -11,6 +11,7 @@
          '[pandeiro.boot-http :refer [serve]]
          '[deraen.boot-livereload :refer [livereload]]
          '[org.martinklepsch.boot-garden :refer [garden]])
+
 
 
 ; task options
@@ -32,19 +33,15 @@
           (markdown)
           (css)
           (render :renderer 'site.core/page))) ;:page "index.html"
+
           ;(collection :renderer 'site.core/page)
 
 
 
 ;------------------------
-(deftask build
-    "Build blog."
-    []
-    (comp (build-dev)
-         (target :dir #{"target"})))
-
 
 (deftask dev
+  "for dev"
     []
     (comp (watch)
          (build-dev)
@@ -54,7 +51,9 @@
 
 
 (deftask prod []
+  "Build prod version"
  (comp (build-dev) ; :prod true
+       (inject-scripts :scripts #{"ga.js"})
        (sift :include #{#"^public"})
        (sift :move {#"^public/" ""})
        (target :dir #{"build"})))

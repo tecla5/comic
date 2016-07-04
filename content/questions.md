@@ -21,11 +21,14 @@ NaN =? Infinity =? nil
 !
 (set! (.-title js/document) "Hi!")
 
+unnamed function
+#(+ %1 %2)
+
 ?!
 \# reader macro
 ```clojure
-(map #(vector (first %) (* 2 (second %)))
-            {:a 1 :b 2 :c 3})
+(map #(vector (first %) (* 2 (second %))) {:a 1 :b 2 :c 3})
+;= ([:c 6] [:b 4] [:a 2])
 ```
 
 ?!
@@ -39,6 +42,9 @@ true
 (not nil) ;; true
 
 # To know
+
+(defmulti diet (fn [x] (:eater x)))
+(defmethod diet :carnivore [a] )
 
 (.. "a b c d" toUpperCase (replace "A" "X"))
 (. (. "a b c d" toUpperCase) (replace "A" "X")) ;; "X B C D"
