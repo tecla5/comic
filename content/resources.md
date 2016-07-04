@@ -1,6 +1,8 @@
 # resources
 
 ## Web
+similar pages
+[more resources](https://clojurebridge.github.io/community-docs/docs/getting-started/resources/)
 
 ### Teory
 - the documentation [docs](http://clojure-doc.org/)
@@ -9,8 +11,9 @@
 - [wikibook category](https://en.wikibooks.org/wiki/Category:Clojure_Programming)
 
 ### practice
-started with 4clojure it is a resource to learn the language through interactive problem
-[4clojure](https://www.4clojure.com/)
+it is a resource to learn the language through interactive problem
+for beginners use [cljs koans](http://clojurescriptkoans.com/)
+then go with 4clojure [4clojure](https://www.4clojure.com/)
 
 ### REPL
 online REPL

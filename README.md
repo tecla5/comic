@@ -30,8 +30,8 @@ git subtree push --prefix target/public origin gh-pages
     boot prod
 
     git checkout gh-pages
-    sudo cp -r target/public/* .
-    rm -r target
+    sudo cp -r build/* .
+    rm -r build .nrepl-port
 
     git add --all
     git commit -m 'version xyz'

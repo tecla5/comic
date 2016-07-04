@@ -17,6 +17,10 @@ get more sofisticted the blog with perun ([enhancing](/enhancing.html))
 added Boot task to compile Garden stylesheets.
 Provides the garden task, which compiles Garden to CSS. ([styling task](/styling.html))
 
+## inject script task
+added inject script task to boot to do google analytics. ([injectscript task](/injectscript.html))
+
+
 ## resources
 Good resources to learn clojure ([resources](/resources.html))
 
