@@ -7,5 +7,8 @@ m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
 ga('create', 'UA-69202028-2', 'auto');
 //ga('require', 'displayfeatures');
 ga('send', 'pageview');
-</script></head><body><div style="max-width: 900px; margin: 0 auto;"><a href="/">Home</a><h1><a href="#about-this-site" name="about-this-site"></a>About this site</h1>
-<p>Active Group learning awesome projects</p></div></body></html>
+</script></head><body><div style="max-width: 900px; margin: 0 auto;"><a href="/">Home</a><h1><a href="#inject-script" name="inject-script"></a>inject script</h1>
+<p>get the script from google analytics and saved on <code>resources/ga.js</code> file</p>
+<p>simply added the task, it will inject the js to all html files.</p>
+<pre><code class="clojure">(inject-scripts :scripts #{&quot;ga.js&quot;})
+</code></pre></div></body></html>
