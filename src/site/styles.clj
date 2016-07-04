@@ -1,4 +1,4 @@
-(ns site.styles
+(ns styles
   (:require [garden.def :refer [defrule defstyles]]
             [garden.stylesheet :refer [rule]]))
 

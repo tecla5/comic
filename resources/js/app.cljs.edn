@@ -1,0 +1,3 @@
+{:require  [comic.app]
+ :init-fns [comic.app/init]
+ :compiler-options {:asset-path "js/app.out"}}
