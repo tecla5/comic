@@ -1,8 +1,17 @@
 # rum
 
+after reading for a while We decide to use RUM.
 
 [rum](https://github.com/tonsky/rum)
 
+
+RUM depends of:
+  cljsjs/react
+  cljsjs/react-dom
+  sablono
+
+
+## Configuration
 
 edit `build.boot`
 
@@ -12,14 +21,9 @@ edit `build.boot`
 
 ```
 
-deps:
-  cljsjs/react 15.2.0-0
-  cljsjs/react-dom 15.2.0-0
-  sablono 0.7.2
-
+we change the way to do the app and we add rum react.
 
 edit `app.cljs`
-
 ```clojure
 (ns comic.app
     (:require [rum.core :as rum]))
@@ -50,17 +54,4 @@ edit `app.cljs`
   (js/console.log "Starting the app")
   (rum/mount (app-container) (el "container")))
 
-
 ```
-
-
-	modified:   src/site/core.clj
-
-
-Browser console
-https://developer.chrome.com/devtools/docs/shortcuts
-
-github
-https://github.com/binaryage/dirac
-
-https://chrome.google.com/webstore/detail/react-developer-tools/fmkadmapgofadopljbjfkapdkoienihi?utm_source=chrome-app-launcher-info-dialog
