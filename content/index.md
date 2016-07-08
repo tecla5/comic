@@ -21,7 +21,14 @@ Provides the garden task, which compiles Garden to CSS. ([styling task](/styling
 added inject script task to boot to do google analytics. ([injectscript task](/injectscript.html))
 
 ## cljs task
-added cljs to the blog[cljs task](/cljs.html))
+added cljs to the blog ([cljs task](/cljs.html))
+
+
+
+## RUM library
+RUM is a react wrapper  ([RUM](/rum.html))
+
+
 
 ## resources
 Good resources to learn clojure ([resources](/resources.html))

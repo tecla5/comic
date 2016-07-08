@@ -9,7 +9,7 @@
       [:div {:style "max-width: 900px; margin: 0 auto;"}
         [:a {:href "/"} "Home"] ; <---- We added this
         (-> data :entry :content)]
-      [:div {:style "background-color: blue"}
-          [:h2 "comic-app"]
-          [:div {:id "container"}]
+      [:div
+          [:h2 "comic-app:"]
+          [:div {:id "container" :style "background-color: lightblue"}]
           (include-js "js/app.js")]]))

@@ -13,7 +13,13 @@
                  [com.cemerick/piggieback   "0.2.1"      :scope "test"]
                  [org.clojure/tools.nrepl   "0.2.12"     :scope "test"]
                  [weasel                    "0.7.0"      :scope "test"]
-                 [org.clojure/clojurescript "1.9.89"]]); 1.7.228
+
+                  ; Frontend
+                 [org.clojure/clojurescript "1.9.89"]; 1.7.228
+                 [rum "0.10.4"]]) ;[rum "0.10.4"]
+                 ;[rum "0.6.0" :exclusions [[cljsjs/react] [cljsjs/react-dom]]]])
+                 ;[org.clojure/core.async "0.2.374"]
+
 
 
 (require '[io.perun :refer :all]
@@ -51,7 +57,7 @@
 ; build for cljs
 (deftask build []
   (comp (speak)
-        (cljs)
+        (cljs)  ; :unified true :source-map true :optimizations :none
         (sift :move {#"^js/" "public/js/"})))
 ;        (sift :include #{#"^js/"})
 
@@ -71,13 +77,13 @@
   "build and watch for dev"
   []
   (comp
+      (watch)
       (development)
       (build-dev)
-      (watch)
       (cljs-repl); before cljs
       (reload)
       (build)
-      (serve :resource-root "public")
+      (serve :resource-root "public"); :dir "target" :port 3000
       (livereload :asset-path "public" :filter #"\.(css|html|js)$")))
 
 

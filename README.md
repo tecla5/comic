@@ -31,7 +31,7 @@ git subtree push --prefix target/public origin gh-pages
 
     git checkout gh-pages
     sudo cp -r build/* .
-    rm -r build .nrepl-port
+    sudo rm -r build .nrepl-port
 
     git add --all
     git commit -m 'version xyz'
@@ -50,3 +50,7 @@ git subtree push --prefix target/public origin gh-pages
     boot --help
     boot render --help
     boot -h
+
+    boot repl -h
+    boot repl
+    boot show -d

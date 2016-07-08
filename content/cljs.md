@@ -6,29 +6,29 @@ based on [tenzing](https://github.com/martinklepsch/tenzing) was added clojuresc
 ## clojurescript
 
 [ClojureScript](https://github.com/clojure/clojurescript)
- is a compiler for Clojure that targets JavaScript. It is designed to emit JavaScript code which is compatible with the advanced compilation mode of the Google Closure optimizing compiler.
+is a compiler for Clojure that targets JavaScript. It is designed to emit JavaScript code which is compatible with the advanced compilation mode of the Google Closure optimizing compiler.
 
 
 
- ## Adding the ClojureScript app
+## Adding the ClojureScript app
 
 
- creating the file `cljs/comic/app.cljs` that contain the our app with clojurescript.
- ```clojure
+creating the file `cljs/comic/app.cljs` that contain the our app with clojurescript.
+```clojure
  (defn init []
    (let [c (.. js/document (createElement "DIV"))]
      (aset c "innerHTML" "<p>i'm dynamically created, yes :)</p>")
      (.. js/document (getElementById "container") (appendChild c))))
- ```
+```
 
 
- adding id container and script reference to `site/core.clj` file
- ```clojure
-       [:div {:style "background-color: blue"}
-           [:h2 "comic-app"]
-           [:div {:id "container"}]
-           (include-js "js/app.js")]]))
- ```
+adding id container and script reference to `site/core.clj` file
+```clojure
+     [:div {:style "background-color: blue"}
+         [:h2 "comic-app"]
+         [:div {:id "container"}]
+         (include-js "js/app.js")]]))
+```
 
 
 ## Configuration for compile and ClojureScript browser REPL on boot
@@ -37,7 +37,7 @@ based on [tenzing](https://github.com/martinklepsch/tenzing) was added clojuresc
 ### boot-cljs task
 
 [boot-cljs](https://github.com/adzerk-oss/boot-cljs)
-Boot task to compile ClojureScript applications.
+ Boot task to compile ClojureScript applications.
 
 adding config file `app.cljs.edn`
 ```clojure
