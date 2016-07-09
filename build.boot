@@ -16,10 +16,14 @@
 
                   ; Frontend
                  [org.clojure/clojurescript "1.9.89"]; 1.7.228
-                 [rum "0.10.4"]]) ;[rum "0.10.4"]
+                 [rum "0.10.4"] ;[rum "0.10.4"]
                  ;[rum "0.6.0" :exclusions [[cljsjs/react] [cljsjs/react-dom]]]])
                  ;[org.clojure/core.async "0.2.374"]
 
+                 ; Dev tool
+                 [binaryage/devtools      "0.7.0" :scope "test"]
+                 [binaryage/dirac         "0.6.1" :scope "test"]
+                 [jupl/boot-cljs-devtools "0.1.0" :scope "test"]])
 
 
 (require '[io.perun :refer :all]
@@ -29,10 +33,18 @@
 
          '[adzerk.boot-cljs      :refer [cljs]]
          '[adzerk.boot-cljs-repl :refer [cljs-repl start-repl]]
-         '[adzerk.boot-reload    :refer [reload]])
+         '[adzerk.boot-reload    :refer [reload]]
+
+         '[jupl.boot-cljs-devtools :refer [cljs-devtools]])
 
 
 ; task options
+;;(task-options!
+;; repl {:middleware '[cemerick.piggieback/wrap-cljs-repl]})
+
+;; task
+
+;; garden css task
 (deftask css
   "Generate CSS from Garden and watch for future changes"
   []
@@ -67,7 +79,7 @@
   identity)
 
 (deftask development []
-  (task-options! cljs {:optimizations :none :source-map true}
+  (task-options! cljs {:optimizations :none :source-map true} ;; :source-map-timestamp true
                  reload {:on-jsload 'comic.app/init})
   identity)
 
@@ -79,11 +91,12 @@
   (comp
       (watch)
       (development)
+      (cljs-devtools) ;; after watch and before cljs/build-dev
       (build-dev)
       (cljs-repl); before cljs
-      (reload)
+      (reload) ;; :on-jsload 'frontend.dev/refresh
       (build)
-      (serve :resource-root "public"); :dir "target" :port 3000
+      (serve :resource-root "public"); :dir "target" :port 3000 :port 8080
       (livereload :asset-path "public" :filter #"\.(css|html|js)$")))
 
 

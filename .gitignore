@@ -3,3 +3,6 @@ build
 docs
 
 .nrepl-port
+
+out
+nohup.out

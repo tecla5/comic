@@ -38,7 +38,7 @@ git subtree push --prefix target/public origin gh-pages
     git push -u origin gh-pages
 
     git checkout master
-
+    sudo rm -r js
 
 ## references
 

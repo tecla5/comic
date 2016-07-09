@@ -57,3 +57,12 @@ and dependant also [tool.nrepl](https://github.com/clojure/tools.nrepl)
 - Weasel uses WebSockets to communicate between a ClojureScript REPL, which is typically hosted on nREPL using piggieback, and an environment which can execute compiled ClojureScript, which can be a web browser or any JavaScript environment that supports the WebSocket APIs.
 
 - Piggieback is nREPL middleware that enables the use of a ClojureScript REPL on top of an nREPL session.
+
+on browser js console:
+![screenshot from 2016-07-08 16 56 23](https://cloud.githubusercontent.com/assets/3462917/16707698/34038524-45d8-11e6-9daf-b0858d2da7d6.png)
+
+
+result on the app:
+  ![screenshot from 2016-07-08 16 54 44](https://cloud.githubusercontent.com/assets/3462917/16707673/3628fb28-45d7-11e6-9917-7ceb091a3060.png)
+
+___

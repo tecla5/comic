@@ -55,3 +55,6 @@ edit `app.cljs`
   (rum/mount (app-container) (el "container")))
 
 ```
+result of changes on app:
+
+  ![screenshot from 2016-07-08 16 55 53](https://cloud.githubusercontent.com/assets/3462917/16707676/472eba34-45d7-11e6-87c1-ae04999413b1.png)

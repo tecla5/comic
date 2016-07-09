@@ -2,6 +2,8 @@
 filter boot task by file type
 dev tools on Browser like chrome-devtools diract and react-developer-tools
 improve boot render
+library js for design
+make some components
 
 
 ## 0.0.1 (23.6.2016)
