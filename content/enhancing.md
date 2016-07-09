@@ -31,6 +31,9 @@ for more info
 ## livereload
 we follow this to achieve it [boot livereload](https://github.com/Deraen/boot-livereload)
 
+result on browser js console:
+> client.cljs:40 Reload websocket connected.
+
 
 [livereload chrome](https://chrome.google.com/webstore/detail/livereload/jnihajbhpnppcggbcgedagnkighmdlei)
 
