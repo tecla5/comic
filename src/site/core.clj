@@ -4,7 +4,8 @@
 
 (defn page [data]
   (html5
-    [:head (include-css "css/garden.css")]
+    [:head (include-css "css/garden.css" "css/material.inc.css")]
+      ;[:link {:rel "stylesheet" :href "css/material.inc.css"}]]
     [:body
       [:div {:style "max-width: 900px; margin: 0 auto;"}
         [:a {:href "/"} "Home"] ; <---- We added this
