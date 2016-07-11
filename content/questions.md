@@ -43,6 +43,10 @@ true
 
 # To know
 
+
+set! (.-exports js/module)
+
+
 (defmulti diet (fn [x] (:eater x)))
 (defmethod diet :carnivore [a] )
 

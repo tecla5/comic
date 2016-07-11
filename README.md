@@ -31,14 +31,13 @@ git subtree push --prefix target/public origin gh-pages
 
     git checkout gh-pages
     sudo cp -r build/* .
-    sudo rm -r build .nrepl-port
+    sudo rm -r build out nohup.out
 
     git add --all
     git commit -m 'version xyz'
     git push -u origin gh-pages
 
     git checkout master
-    sudo rm -r js
 
 ## references
 
