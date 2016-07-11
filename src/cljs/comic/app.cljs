@@ -1,8 +1,7 @@
 (ns comic.app
   ;(:require-macros [frontend.macro :refer [foobar]])
-  (:require [rum.core :as rum]))
-            ;[common.hello :refer [foo-cljc]]
-            ;[foo.bar]))
+  (:require [rum.core :as rum]
+            [rum.mdl  :as mdl]))
 
 
 (enable-console-print!)
@@ -23,12 +22,8 @@
   [:div
    [:h1 (foo-cljc (:y @app-state))] ;(foo-cljc (:y @app-state))]
    [:div.btn-toolbar
-    [:button.btn.btn-danger
-     {:type "button"
-      :on-click #(swap! app-state update :y inc)} "+"]
-    [:button.btn.btn-success
-     {:type "button"
-      :on-click #(swap! app-state update :y dec)} "-"]
+    (mdl/button {:mdl [:fab :colored :ripple] :on-click #(swap! app-state update :y inc) }    (mdl/icon "add"))
+    (mdl/button {:mdl [:fab :colored :ripple] :on-click #(swap! app-state update :y dec) }    (mdl/icon "remove"))
     [:button.btn.btn-default
      {:type "button"
       :on-click #(js/console.log @app-state)}

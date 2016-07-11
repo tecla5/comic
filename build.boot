@@ -114,7 +114,7 @@
       ;(target :dir #{"build"})))
 
 
-(deftask prod
+(deftask prod ; release
   "Build for prod version"
   []
   (comp  ; :prod true
