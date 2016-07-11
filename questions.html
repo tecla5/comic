@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html><head><link href="css/garden.css" rel="stylesheet" type="text/css"><script>(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+<html><head><link href="css/garden.css" rel="stylesheet" type="text/css"><link href="css/material.inc.css" rel="stylesheet" type="text/css"><link href="//fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"><link href="//cdnjs.cloudflare.com/ajax/libs/normalize/4.1.1/normalize.min.css" rel="stylesheet"><script>(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
 (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
 m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
 })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
@@ -24,6 +24,7 @@ ga('send', 'pageview');
 <p>?! (= 1 1 2) ;; false</p>
 <p>?! (not nil) ;; true</p>
 <h1><a href="#to-know" name="to-know"></a>To know</h1>
+<p>set! (.-exports js/module)</p>
 <p>(defmulti diet (fn [x] (:eater x))) (defmethod diet :carnivore [a] )</p>
 <p>(.. "a b c d" toUpperCase (replace "A" "X")) (. (. "a b c d" toUpperCase) (replace "A" "X")) ;; "X B C D" cljs.user=&gt; (.replace (.toUpperCase "a b c d") "A" "X") ;; "X B C D" cljs.user=&gt; (-&gt; "a b c d" .toUpperCase (.replace "A" "X")) ;; "X B C D"</p>
 <p>(doto (new java.util.HashMap) (.put "a" 1) (.put "b" 2))</p>
