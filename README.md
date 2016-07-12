@@ -27,6 +27,18 @@ open browser
 git subtree push --prefix target/public origin gh-pages
 --->
 
+ https://github.com/X1011/git-directory-deploy
+
+```sh
+boot prod
+./deploy.sh
+```
+<!--
+    boot prod
+    git add release && git commit -m "Initial dist subtree commit"
+    git subtree push --prefix release origin gh-pages
+-->
+<!--
     boot prod
 
     git checkout gh-pages
@@ -39,6 +51,7 @@ git subtree push --prefix target/public origin gh-pages
     git push -u origin gh-pages
 
     git checkout master
+-->
 
 ## references
 

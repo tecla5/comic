@@ -131,10 +131,10 @@
 ;-------------- production
 (deftask production []
   (task-options! cljs {:optimizations :advanced})
-                 ;copy {:output-dir    "release" :matching       #{#"CNAME$"}})
+                 ;copy {:output-dir    "dist" :matching       #{#"CNAME$"}})
   identity)
 
-(deftask release
+(deftask dist
   "Build for prod version"
   []
   (comp  ; :prod true
@@ -145,12 +145,12 @@
       (inject-scripts :scripts #{"ga.js"})
       ;(sift :include #{#"^CNAME"})
       (sift :move {#"^public/" ""})
-      (target :dir #{"release"})))
+      (target :dir #{"dist"})))
 
 
 (deftask prod ; release
   "Build for prod version"
   []
   (comp  ; :prod true
-    (release)
-    (serve :resource-root "release" :port 8080))); :dir "target" :port 3000 :port 8080
+    (dist)
+    (serve :resource-root "dist" :port 8080))); :dir "target" :port 3000 :port 8080
