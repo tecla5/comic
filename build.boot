@@ -25,6 +25,7 @@
                  [binaryage/dirac         "0.6.1" :scope "test"]
                  [jupl/boot-cljs-devtools "0.1.0" :scope "test"]])
 
+                 ;[cpmcdaniel/boot-copy "1.0" :scope "provided"]])
 
 (require '[io.perun :refer :all]
          '[pandeiro.boot-http :refer [serve]]
@@ -40,6 +41,8 @@
          ; rum.mdl
          '[rum.core :as rum]
          '[rum.mdl  :as mdl])
+         ;'[cpmcdaniel.boot-copy :refer :all])
+
 
 ; task options
 ;;(task-options!
@@ -79,50 +82,75 @@
           ;(collection :renderer 'site.core/page)
 
 ; build for cljs
-(deftask build []
+(deftask build-js []
   (comp (speak)
         (cljs)  ; :unified true :source-map true :optimizations :none
         (sift :move {#"^js/" "public/js/"})))
 ;        (sift :include #{#"^public/js/"})
 
 
-(deftask production []
-  (task-options! cljs {:optimizations :advanced})
-  identity)
+(deftask build
+  "build and watch for dev"
+  []
+  (comp
+    (rum-mdl)
+    (cljs-devtools) ;; after watch and before cljs/build-dev
+    (build-dev)
+    (cljs-repl); before cljs
+    (build-js)))
+    ;(target :dir #{"build"})))
 
+
+
+;-------------- development
 (deftask development []
   (task-options! cljs {:optimizations :none :source-map true} ;; :source-map-timestamp true
                  reload {:on-jsload 'comic.app/init})
   identity)
 
-;------------------------
+(deftask public
+  "build and watch for dev"
+  []
+  (comp
+    (development)
+    (build)
+    (target :dir #{"build"})))
+
 
 (deftask dev
   "build and watch for dev"
   []
   (comp
-      (rum-mdl)
       (development)
       (watch)
-      (cljs-devtools) ;; after watch and before cljs/build-dev
-      (build-dev)
-      (cljs-repl); before cljs
-      (reload) ;; :on-jsload 'frontend.dev/refresh
       (build)
+      (reload) ;; :on-jsload 'frontend.dev/refresh
       (serve :resource-root "public"); :dir "target" :port 3000 :port 8080
       (livereload :asset-path "public" :filter #"\.(css|html|js)$")))
-      ;(target :dir #{"build"})))
 
+;-------------- production
+(deftask production []
+  (task-options! cljs {:optimizations :advanced})
+                 ;copy {:output-dir    "release" :matching       #{#"CNAME$"}})
+  identity)
 
-(deftask prod ; release
+(deftask release
   "Build for prod version"
   []
   (comp  ; :prod true
       (production)
       (build-dev)
       (rum-mdl) ;; after css
-      (build)
+      (build-js)
       (inject-scripts :scripts #{"ga.js"})
-      ;(sift :include #{#"^public"})
+      ;(sift :include #{#"^CNAME"})
       (sift :move {#"^public/" ""})
-      (target :dir #{"build"})))
+      (target :dir #{"release"})))
+
+
+(deftask prod ; release
+  "Build for prod version"
+  []
+  (comp  ; :prod true
+    (release)
+    (serve :resource-root "release" :port 8080))); :dir "target" :port 3000 :port 8080

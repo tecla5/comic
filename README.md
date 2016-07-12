@@ -30,7 +30,8 @@ git subtree push --prefix target/public origin gh-pages
     boot prod
 
     git checkout gh-pages
-    sudo cp -r build/* .
+    sudo cp -r release/* .
+    sudo rm -r release
     sudo rm -r build out nohup.out
 
     git add --all
