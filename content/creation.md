@@ -16,16 +16,25 @@ the result:
 https://github.com/tecla5/comic
 
 
-## decide to use github pages
-we follow this [creating gh-pages](https://help.github.com/articles/creating-project-pages-manually/)
+## Hosting
+
+we decide to use [github pages](https://pages.github.com/)
+we follow this article of [creating gh-pages](https://help.github.com/articles/creating-project-pages-manually/)
 
 the result was this:
 http://tecla5.github.io/comic
 
-and this [custom-domain](https://help.github.com/articles/using-a-custom-domain-with-github-pages/)
+### deploy
+
+This is a script for deploying generated files to a git branch
+[automatic deploy](https://github.com/X1011/git-directory-deploy)
+
+### custom domain
+was added a CNAME, reading about [custom-domain](https://help.github.com/articles/using-a-custom-domain-with-github-pages/)
 
 and we configure a subdomain
 http://comic.tecla5.com/
+
 
 ##  static site generator blog
 we choose the github project [perun](https://github.com/hashobject/perun)

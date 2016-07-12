@@ -27,10 +27,8 @@ open browser
 git subtree push --prefix target/public origin gh-pages
 --->
 
- https://github.com/X1011/git-directory-deploy
-
 ```sh
-boot prod
+boot dist
 ./deploy.sh
 ```
 <!--
