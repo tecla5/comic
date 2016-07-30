@@ -1,5 +1,5 @@
 ---
-name: resources
+name: +resources
 keywords: boot, blog
 date-created: 2016-07-07
 draft: true

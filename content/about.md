@@ -1,9 +1,7 @@
 ---
-name: about us
+name: +about us
 keywords: boot, blog
-date-created: 2016-07-07
-date-published: 2016-07-07
-date-modified: 2016-07-30
+draft: true
 ---
 
 # About this site

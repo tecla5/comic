@@ -1,7 +1,7 @@
 ---
 name: inject javascript
 keywords: boot, blog
-date-created: 2016-07-07
+date-created: 2016-07-11
 draft: true
 ---
 

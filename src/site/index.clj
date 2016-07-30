@@ -36,7 +36,7 @@
           [:div {:id "container" :style "background-color: lightblue"}]
           (include-js "js/app.js")]
 
-      (for [{:keys [permalink name date-published]} posts] ; permalink
+      (for [{:keys [permalink name date-published]} (sort-by :date-created posts)] ; permalink
         [:article {:itemprop "blogPost" :itemscope "" :itemtype "http://schema.org/BlogPosting"}
          [:h3
           ;[:span date-published]; datestr

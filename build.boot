@@ -91,9 +91,9 @@
     (comp
           ;;(base)
           (markdown) ;:options {:extensions {:extanchorlinks true}})
+          (global-metadata)
           ;;(print-meta)
           (if prod (draft) identity);(draft)
-          (global-metadata)
           (css)
           ;;(draft)
           ;;(ttr)

@@ -1,7 +1,7 @@
 ---
 name: creation blog
 keywords: boot, blog
-date-created: 2016-07-07
+date-created: 2016-07-08
 date-published: 2016-07-08
 date-modified: 2016-07-29
 ---

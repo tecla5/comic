@@ -1,5 +1,5 @@
 ---
-name: index changes
+name: +changes
 keywords: boot, blog
 date-created: 2016-07-07
 draft: true
