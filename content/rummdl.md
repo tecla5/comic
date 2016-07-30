@@ -1,3 +1,10 @@
+---
+name: rum mdl
+keywords: boot, blog
+date-created: 2016-07-15
+draft: true
+---
+
 # RUM MDL
 
 depencies:
@@ -58,7 +65,7 @@ edit `app.cljs`
 
 
 
-the result: 
+the result:
 ![screenshot from 2016-07-11 19 49 54](https://cloud.githubusercontent.com/assets/3462917/16740766/d9d8cd00-47a0-11e6-9045-1ef5b4df145b.png)
 
 ___

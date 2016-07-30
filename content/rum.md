@@ -1,3 +1,10 @@
+---
+name: rum
+keywords: boot, blog
+date-created: 2016-07-13
+draft: true
+---
+
 # rum
 
 after reading for a while We decide to use RUM.
