@@ -1,9 +1,8 @@
 ---
 name: styling garden
 keywords: boot, blog
-date-created: 2016-07-04
-date-published: 2016-07-04
-date-modified: 2016-07-08
+date-created: 2016-07-07
+draft: true
 ---
 
 # Styling task
