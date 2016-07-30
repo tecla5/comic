@@ -40,9 +40,12 @@
 
          ; rum.mdl
          '[rum.core :as rum]
-         '[rum.mdl  :as mdl])
+         '[rum.mdl  :as mdl]
          ;'[cpmcdaniel.boot-copy :refer :all])
 
+         '[io.perun.core :as perun]
+         '[boot.core :as boot]
+         '[clojure.string :as string])
 
 ; task options
 ;;(task-options!
@@ -70,14 +73,39 @@
     ;(sift :include #{#"^css/"})))
     ;(target :dir #{"build"})))
 
+
+(deftask split-keywords []
+  (boot/with-pre-wrap fileset
+    (->> fileset
+         (perun/get-meta)
+         (map (fn [{:keys [keywords] :as post}]
+                (if (string? keywords)
+                  (assoc post :keywords (->> (string/split keywords #",")
+                                             (mapv string/trim)))
+                  post)))
+         (perun/set-meta fileset))))
+
 ; build for markdown css and html
 (deftask build-dev
-    []
-    (comp (global-metadata)
-          (base)
-          (markdown)
+    [p prod bool "Build rss, sitemap etc."]
+    (comp
+          ;;(base)
+          (markdown) ;:options {:extensions {:extanchorlinks true}})
+          ;;(print-meta)
+          (if prod (draft) identity);(draft)
+          (global-metadata)
           (css)
-          (render :renderer 'core/page))) ;:page "index.html"
+          ;;(draft)
+          ;;(ttr)
+          ;;(slug)
+          (permalink :permalink-fn #(perun/absolutize-url (str (:short-filename %) "/"))) ;"/"
+          ;;(canonical-url)
+          ;;(split-keywords)
+          (render :renderer 'post/render) ; blog.views.post/render
+          (collection :renderer 'index/render :page "index.html") ;; blog.views.index/render
+          ;(collection :renderer 'blog.views.tags/render :page "tags/index.html")
+
+          (target :dir #{"build"})))
 
           ;(collection :renderer 'site.core/page)
 
@@ -105,11 +133,12 @@
 ;-------------- development
 (deftask development []
   (task-options! cljs {:optimizations :none :source-map true} ;; :source-map-timestamp true
-                 reload {:on-jsload 'comic.app/init})
+                 reload {:on-jsload 'comic.app/init}
+                 serve {:resource-root "public"})
   identity)
 
 (deftask public
-  "build and watch for dev"
+  "build and leave on folder"
   []
   (comp
     (development)
@@ -125,13 +154,15 @@
       (watch)
       (build)
       (reload) ;; :on-jsload 'frontend.dev/refresh
-      (serve :resource-root "public"); :dir "target" :port 3000 :port 8080
+      (serve); :dir "target" :port 3000 :port 8080
       (livereload :asset-path "public" :filter #"\.(css|html|js)$")))
 
 ;-------------- production
 (deftask production []
-  (task-options! cljs {:optimizations :advanced})
+  (task-options! cljs {:optimizations :advanced}
+                 build-dev {:prod true}
                  ;copy {:output-dir    "dist" :matching       #{#"CNAME$"}})
+                 serve {:resource-root "" :port 8080})
   identity)
 
 (deftask dist
@@ -149,8 +180,9 @@
 
 
 (deftask prod ; release
-  "Build for prod version"
+  "Build for prod version and watch"
   []
   (comp  ; :prod true
+    (watch)
     (dist)
-    (serve :resource-root "dist" :port 8080))); :dir "target" :port 3000 :port 8080
+    (serve))); :dir "target" :port 3000 :port 8080

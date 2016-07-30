@@ -1,3 +1,11 @@
+---
+name: styling garden
+keywords: boot, blog
+date-created: 2016-07-04
+date-published: 2016-07-04
+date-modified: 2016-07-08
+---
+
 # Styling task
 
 we adding styling tasks based in garden to boot

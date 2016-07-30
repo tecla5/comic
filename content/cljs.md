@@ -1,3 +1,11 @@
+---
+name: cljs
+keywords: boot, blog
+date-created: 2016-07-04
+date-published: 2016-07-04
+date-modified: 2016-07-08
+---
+
 # Cljs task
 
 based on [tenzing](https://github.com/martinklepsch/tenzing) was added clojurescript to the blog.

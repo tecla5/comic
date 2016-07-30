@@ -1,3 +1,11 @@
+---
+name: index changes
+keywords: boot, blog
+date-created: 2016-07-04
+date-published: 2016-07-04
+date-modified: 2016-07-08
+---
+
 # Comic
 
 [about-us](/about.html)
