@@ -14,7 +14,9 @@ server pandeiro help to serve html
 open browser
 
     google-chrome http://localhost:3000
+    nohup google-chrome --new-window --profile-directory=Developer --remote-debugging-port=9222 http://localhost:3000 &
 
+    --incognito
 
 ## build
 

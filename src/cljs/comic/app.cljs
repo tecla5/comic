@@ -1,14 +1,18 @@
 (ns comic.app
   ;(:require-macros [frontend.macro :refer [foobar]])
   (:require [rum.core :as rum]
-            [rum.mdl  :as mdl]))
-
+            [rum.mdl  :as mdl]
+            [dirac.runtime]
+            [comic.states :as states]))
+(dirac.runtime/install!)
 
 (enable-console-print!)
 
 ;; RUM application state
 ;; Defonce used to that the state is kept between reloads
 (defonce app-state (atom {:y 2016}))
+;(defonce app-state (atom year))
+
 
 (defn el [id] (.getElementById js/document id))
 
@@ -40,10 +44,23 @@
   (app)])
 
 
+
+
+
 ;; edn definition
 (defn init []
   (js/console.log "Starting the app")
-  (rum/mount (app-container) (el "container")))
+  (rum/mount (app-container) (el "container"))
+  ;(println (read-string))) ;(slurp "js/data.edn"))))
+  ;(js/console.log "edn:" edn)
+  (if-let [edn (.-edn js/window)]
+    (js/console.log (cljs.reader/read-string edn)))
+  ;(index/add-numbers))
+  ;(.log js/console states/set-data))
+  ;(.log js/console states/mystates)
+  (.log js/console states/sinexport)
+  (.log js/console (states/sinexport)))
+  ;(.log js/console states/data))
 
 ;(defn start! []
 ;  (js/console.log "Starting the app")

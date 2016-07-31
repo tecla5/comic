@@ -1,4 +1,4 @@
-(ns styles
+(ns comic.styles
   (:require [garden.def :refer [defrule defstyles]]
             [garden.stylesheet :refer [rule]]))
 
