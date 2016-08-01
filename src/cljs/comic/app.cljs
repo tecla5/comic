@@ -38,8 +38,18 @@
 ;;
 ;; Put the app/game in here
 ;;
-(rum/defc app-container < rum/reactive []
+(rum/defc app-container < rum/reactive [data]
+  (js/console.log data)
  [:div#box
+;   (for [{:keys [ permalink short-filename date-created]} data] ; permalink
+;     (.log js/console "here" permalink short-filename date-created)
+;     [:article {:key short-filename :itemprop "blogPost" :itemscope "" :itemtype "http://schema.org/BlogPosting"}
+;      [:h3
+;       ;[:span date-published]; datestr
+;       " "
+;       [:a.title {:href short-filename} ;permalink
+;        name]]])
+
   [:h1 (:title (rum/react app-state))]
   (app)])
 
@@ -50,11 +60,11 @@
 ;; edn definition
 (defn init []
   (js/console.log "Starting the app")
-  (rum/mount (app-container) (el "container"))
+  (if-let [edn (.-edn js/window)]
+    (rum/mount (app-container (cljs.reader/read-string edn)) (el "container")))
+    ;(js/console.log (cljs.reader/read-string edn)))
   ;(println (read-string))) ;(slurp "js/data.edn"))))
   ;(js/console.log "edn:" edn)
-  (if-let [edn (.-edn js/window)]
-    (js/console.log (cljs.reader/read-string edn)))
   ;(index/add-numbers))
   ;(.log js/console states/set-data))
   ;(.log js/console states/mystates)

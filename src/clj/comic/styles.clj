@@ -8,4 +8,7 @@
      {:font-family "Helvetica Neue"
       :background-color "beige"
       :font-size   "16px"
-      :line-height 1.5})))
+      :line-height 1.5}))
+  (let [div (rule :div)]
+    (div
+     {:background-color "white"})))

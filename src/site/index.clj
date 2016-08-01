@@ -32,7 +32,8 @@
   ;(println (read-string (slurp "data.edn")))
   (def linkposts
     (mapv (defn x[post]
-              {:short-filename (get post :short-filename)})
+              { :short-filename (get post :short-filename)
+                :permalink (get post :permalink)})
          (sort-by :date-created posts)))
   ;(println linkposts)
 
