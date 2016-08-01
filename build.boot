@@ -54,11 +54,12 @@
 ;; task
 
 ;; garden css task
+
 (deftask css
   "Generate CSS from Garden and watch for future changes"
   []
   (comp
-    (garden :styles-var 'comic.styles/base :output-to "public/css/garden.css" :pretty-print true)))
+    (garden :styles-var 'comic.styles/css :output-to "public/css/garden.css" :pretty-print true)))
     ;(sift :include #{#"^public/css/"})))
 
 
