@@ -7,10 +7,13 @@ draft: true
 
 # RUM MDL
 
+Reusable material-design-lite react components written with rum [rum dml](https://github.com/aJchemist/rum-mdl)
+
 depencies:
-lassname-0.2.1.jar
-rum-mdl-0.1.1.jar
-material-1.1.3-1.jar
+
+ - lassname-0.2.1.jar
+ - rum-mdl-0.1.1.jar
+ - material-1.1.3-1.jar
 
 
 ## adding rum mdl

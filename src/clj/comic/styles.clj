@@ -1,4 +1,4 @@
-(ns styles
+(ns comic.styles
   (:require [garden.def :refer [defrule defstyles]]
             [garden.stylesheet :refer [rule]]))
 
@@ -8,4 +8,7 @@
      {:font-family "Helvetica Neue"
       :background-color "beige"
       :font-size   "16px"
-      :line-height 1.5})))
+      :line-height 1.5}))
+  (let [div (rule :div)]
+    (div
+     {:background-color "white"})))

@@ -1,4 +1,4 @@
-(ns post
+(ns comic.post
   (:use [hiccup.page :only (html5 include-css include-js)]))
 
 

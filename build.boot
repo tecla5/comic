@@ -1,5 +1,5 @@
 (set-env!
- :source-paths #{"src/site" "content" "src/cljs"} ;
+ :source-paths #{"src/clj" "src/cljc" "src/cljs" "content"} ;
  :resource-paths #{"resources"}
  :dependencies '[[perun  "0.3.0" :scope "test"]
                  [pandeiro/boot-http "0.7.3"]
@@ -22,7 +22,7 @@
 
                  ; Dev tool
                  [binaryage/devtools      "0.7.2" :scope "test"]
-                 [binaryage/dirac         "0.6.1" :scope "test"]
+                 [binaryage/dirac         "0.6.3" :scope "test"]
                  [jupl/boot-cljs-devtools "0.1.0" :scope "test"]])
 
                  ;[cpmcdaniel/boot-copy "1.0" :scope "provided"]])
@@ -58,7 +58,7 @@
   "Generate CSS from Garden and watch for future changes"
   []
   (comp
-    (garden :styles-var 'styles/base :output-to "public/css/garden.css" :pretty-print true)))
+    (garden :styles-var 'comic.styles/base :output-to "public/css/garden.css" :pretty-print true)))
     ;(sift :include #{#"^public/css/"})))
 
 
@@ -85,6 +85,8 @@
                   post)))
          (perun/set-meta fileset))))
 
+
+
 ; build for markdown css and html
 (deftask build-dev
     [p prod bool "Build rss, sitemap etc."]
@@ -101,10 +103,9 @@
           (permalink :permalink-fn #(perun/absolutize-url (str (:short-filename %) "/"))) ;"/"
           ;;(canonical-url)
           ;;(split-keywords)
-          (render :renderer 'post/render) ; blog.views.post/render
-          (collection :renderer 'index/render :page "index.html") ;; blog.views.index/render
+          (render :renderer 'comic.post/render) ; blog.views.post/render
+          (collection :renderer 'comic.index/render :page "index.html") ;; blog.views.index/render
           ;(collection :renderer 'blog.views.tags/render :page "tags/index.html")
-
           (target :dir #{"build"})))
 
           ;(collection :renderer 'site.core/page)

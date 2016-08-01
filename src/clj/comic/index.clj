@@ -1,10 +1,10 @@
-(ns index
+(ns comic.index
   ; : use or require
   ;[hiccup.core :refer [html]]
   (:use [hiccup.page :only (html5 include-css include-js)]
         [hiccup.core :refer [html]]
-        [rum.core :as rum]
-        [comic.states :as states]))
+        [rum.core :as rum]))
+        ;[comic.states :as states]))
   ;[blog.dates :refer [datestr]]
   ;[blog.views.common :as common])
 
@@ -32,22 +32,21 @@
   ;(println (read-string (slurp "data.edn")))
   (def linkposts
     (mapv (defn x[post]
-              { :short-filename (get post :short-filename)
-                :permalink (get post :permalink)})
+              {:short-filename (get post :short-filename)})
          (sort-by :date-created posts)))
-  ;(println linkposts)
+  (println linkposts)
 
-  (states/set-data linkposts)
+  (set-data2 linkposts)
 
-  ;(defn render [{:keys [meta entries]}];[data]
-    ;(println global); nil
+;(defn render [{:keys [meta entries]}];[data]
+  ;(println global); nil
 
   ;(println posts)
   ;{}:path rummdl.md, :slug , :content <hr/>, :permalink /index.html,  :original true,
   ;:full-path /home/.../comic/nbo/-grrwi1/rummdl.md, :parent-path ,  :short-filename rummdl,
   ;:extension md, :filename rummdl.md
 
-  ;entries
+;entries
 
 
   (html5
