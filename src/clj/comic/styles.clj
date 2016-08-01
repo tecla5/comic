@@ -9,6 +9,20 @@
               [color :as color]
               [units :as u :refer [px pt]]]))
 
+
+;"Convenience macro equivalent to `(defn name bindings (list styles*))`."
+(defmacro defstylesfn
+  [name binding & styles]
+  `(defn ~name ~binding (list ~@styles)))
+
+
+(defstylesfn comic []
+  [:div
+   {:background-color "black"}])
+
+
+;; ------------- boot css
+
 (defstyles base
   (let [body (rule :body)]
     (body
@@ -16,11 +30,12 @@
       :background-color "beige"
       :font-size   "16px"
       :line-height 1.5}))
-  (let [div (rule :div)]
+  (let [div (rule :div.comic)]
     (div
-     {:background-color "blue"})))
+     {:background-color "green"}))
+  (let [div (rule :div.mdl-card__title)]
+    (div
+     {:background-color "red"})))
 
 
-
-
-[:demo-card-square [:.mdl-card__title {:background-color "red"}]]
+;; ------------

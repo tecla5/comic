@@ -99,3 +99,12 @@ we install the extension from the chrome web store [react dev tool](https://chro
 
 result on browser js console:
 ![screenshot from 2016-07-09 13 37 59](https://cloud.githubusercontent.com/assets/3462917/16707762/64a75348-45da-11e6-9e2c-62bcfb06359e.png)
+
+
+### atom editor
+
+[parinfer](https://github.com/oakmac/atom-parinfer)
+Parinfer is a text editing mode that can infer Lisp code structure from indentation (and vice versa)
+
+[minimap](https://github.com/atom-minimap/minimap)
+A preview of the full source code.

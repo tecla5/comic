@@ -14,7 +14,7 @@
 
 (rum/defc section [& contents]
     (mdl/grid
-     {:class ["demo" "example"]
+     {:class ["comic"]
       :mdl   [:color-text--grey-600]}
      (apply mdl/cell {:mdl [:12]} contents)))
 

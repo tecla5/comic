@@ -53,10 +53,11 @@
     {:lang "en"} ;; :itemtype "http://schema.org/Blog"
     ;(common/coll-head meta)
     [:head
-       (include-css "css/garden.css"
+       (include-css
                     "css/material.inc.css"
                     "//fonts.googleapis.com/icon?family=Material+Icons"
-                    "//cdnjs.cloudflare.com/ajax/libs/normalize/4.1.1/normalize.min.css")]
+                    "//cdnjs.cloudflare.com/ajax/libs/normalize/4.1.1/normalize.min.css"
+                    "css/garden.css")]
        ;;[:link {:rel "stylesheet" :href "css/material.inc.css"}]]
     [:body
       ;(common/header meta)
