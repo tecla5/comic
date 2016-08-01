@@ -1,6 +1,13 @@
 (ns comic.styles
-  (:require [garden.def :refer [defrule defstyles]]
-            [garden.stylesheet :refer [rule]]))
+  (:require
+            [garden
+              [stylesheet :refer [rule]]
+              [core]
+              [def :refer :all];[defrule defstyles]
+              [selectors :as s]
+              [stylesheet :refer [rule at-media]]
+              [color :as color]
+              [units :as u :refer [px pt]]]))
 
 (defstyles base
   (let [body (rule :body)]
@@ -11,4 +18,9 @@
       :line-height 1.5}))
   (let [div (rule :div)]
     (div
-     {:background-color "white"})))
+     {:background-color "blue"})))
+
+
+
+
+[:demo-card-square [:.mdl-card__title {:background-color "red"}]]

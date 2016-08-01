@@ -4,7 +4,9 @@
             [rum.mdl  :as mdl]
             [cljs.reader :as reader]
             [dirac.runtime]
-            [comic.states :as states]))
+            [comic.states :as states]
+            [comic.cards :as cards]
+            [cljs.reader :as reader]))
 (dirac.runtime/install!)
 
 (enable-console-print!)
@@ -25,6 +27,7 @@
 (rum/defc app < rum/reactive  [] ;data-table
   (js/console.log "home")
   [:div
+   (cards/cards)
    [:h1 (foo-cljc (:y @app-state))] ;(foo-cljc (:y @app-state))]
    [:div.btn-toolbar
     (mdl/button {:mdl [:fab :colored :ripple] :on-click #(swap! app-state update :y inc) }    (mdl/icon "add"))
