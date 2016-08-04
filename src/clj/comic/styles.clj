@@ -156,14 +156,34 @@
      [:.mdl-cell
       {:height "50px"}
 
+      -]]]])
 
-      -]]]]);; ------------- boot css
+
+
+;; ------------- boot css
+
+(defstylesfn card []
+  [:.mdl-card            ;.mdl-card__title
+   {
+     :width "256px"
+     :height "256px"
+     :background "url('http://www.themost10.com/wp-content/uploads/2012/05/Superman-605x400.jpg?dbbc0f') center / cover"}]
+  [:.mdl-card__actions
+    {:height "52px"
+     :padding "16px"
+     :background "rgba(0, 0, 0, 0.2)"}]
+
+  [:.demo-card-image__filename
+    {:color "#fff"
+     :font-size "14px"
+     :font-weight "500"}]);
 
 (defstyles css
   (layout)
   (components-nav)
   (mount)
   (demo)
+  (card)
   (let [body (rule :body)]
     (body
      {:font-family "Helvetica Neue"
@@ -172,17 +192,11 @@
       :line-height 1.5}))
   (let [div (rule :div.comic)]
     (div
-     {:background-color "green"}))
+     {:background-color "lightgrey"}))
   (let [div (rule :div.mdl-card__title)]
     (div
      {:background-color "red"})))
 
-
-(defstylesheetfn css2 []
-  (layout)
-  (components-nav)
-  (mount)
-  (demo))
 
 (comment
   (css {})

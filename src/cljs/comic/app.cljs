@@ -7,6 +7,7 @@
             [comic.states :as states]
             [comic.cards :as cards]
             [cljs.reader :as reader]))
+
 (dirac.runtime/install!)
 
 (enable-console-print!)

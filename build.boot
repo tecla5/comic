@@ -96,9 +96,8 @@
           (markdown) ;:options {:extensions {:extanchorlinks true}})
           (global-metadata)
           ;;(print-meta)
-          (if prod (draft) identity);(draft)
+          (if prod (draft) identity)
           (css)
-          ;;(draft)
           ;;(ttr)
           ;;(slug)
           (permalink :permalink-fn #(perun/absolutize-url (str (:short-filename %) "/"))) ;"/"
@@ -130,10 +129,19 @@
     (build-js)))
     ;(target :dir #{"build"})))
 
+;-------------- design
+(deftask design []
+  ;(merge-env! :source-paths #{"resources"})
+  ;(let [deps (get-env :dependencies)]
+  ;  (set-env! :dependencies (conj deps '[foo/bar "1.2.3"]))
+  ;(set-env! :source-paths #{"src/clj"}) ;
+  ;(println "source-paths" (get-env :source-paths))
+  identity)
 
 
 
 ;-------------- development
+
 (deftask development []
   (task-options! cljs {:optimizations :none :source-map true} ;; :source-map-timestamp true ; :unified true
                  reload {:on-jsload 'comic.app/init :asset-path "public"}
