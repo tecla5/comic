@@ -2,6 +2,7 @@
   ;(:require-macros [frontend.macro :refer [foobar]])
   (:require [rum.core :as rum]
             [rum.mdl  :as mdl]
+            [cljs.reader :as reader]
             [dirac.runtime]
             [comic.states :as states]))
 (dirac.runtime/install!)
@@ -61,7 +62,7 @@
 (defn init []
   (js/console.log "Starting the app")
   (if-let [edn (.-edn js/window)]
-    (rum/mount (app-container (cljs.reader/read-string edn)) (el "container")))
+    (rum/mount (app-container (reader/read-string edn)) (el "container")))
     ;(js/console.log (cljs.reader/read-string edn)))
   ;(println (read-string))) ;(slurp "js/data.edn"))))
   ;(js/console.log "edn:" edn)
