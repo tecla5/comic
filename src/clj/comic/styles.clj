@@ -172,9 +172,12 @@
     {:height "52px"
      :padding "16px"
      :background "rgba(0, 0, 0, 0.2)"}]
-
-  [:.demo-card-image__filename
-    {:color "#fff"
+  [:.mdl-card--border
+       {:color "#fff"
+        :font-size "14px"
+        :font-weight "500"}]
+  [:.mdl-card-image__filename
+    {:color "#111"
      :font-size "14px"
      :font-weight "500"}]);
 

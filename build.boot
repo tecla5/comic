@@ -178,6 +178,7 @@
 
       (serve); :dir "target" :port 3000 :port 8080
       (watch)
+      (css)
       (build-blog)
       (livereload)))
 
@@ -194,6 +195,7 @@
       (cljs-devtools)
 
       (watch)
+      (css)
       (cljs-repl); before cljs
       (reload) ;; :on-jsload 'frontend.dev/refresh
       (build-js)
