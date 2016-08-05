@@ -18,6 +18,8 @@ open browser
 
     --incognito
 
+### read post content for plugins and extras Installation
+
 ## build
 
     boot build

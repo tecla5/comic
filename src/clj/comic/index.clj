@@ -32,7 +32,8 @@
   ;(println (read-string (slurp "data.edn")))
   (def linkposts
     (mapv (defn x[post]
-              {:short-filename (get post :short-filename)})
+              {:short-filename (get post :short-filename)
+               :permalink (get post :permalink)})              
          (sort-by :date-created posts)))
   (println linkposts)
 
@@ -53,10 +54,11 @@
     {:lang "en"} ;; :itemtype "http://schema.org/Blog"
     ;(common/coll-head meta)
     [:head
-       (include-css "css/garden.css"
+       (include-css
                     "css/material.inc.css"
                     "//fonts.googleapis.com/icon?family=Material+Icons"
-                    "//cdnjs.cloudflare.com/ajax/libs/normalize/4.1.1/normalize.min.css")]
+                    "//cdnjs.cloudflare.com/ajax/libs/normalize/4.1.1/normalize.min.css"
+                    "css/garden.css")]
        ;;[:link {:rel "stylesheet" :href "css/material.inc.css"}]]
     [:body
       ;(common/header meta)
@@ -66,16 +68,16 @@
           (set-data linkposts)
 
 
-          (include-js "js/app.js")]
+          (include-js "js/app.js")]]))
 
 
-      (for [{:keys [permalink name date-published]} (sort-by :date-created posts)] ; permalink
-        [:article {:itemprop "blogPost" :itemscope "" :itemtype "http://schema.org/BlogPosting"}
-         [:h3
-          ;[:span date-published]; datestr
-          " "
-          [:a.title {:href permalink :itemprop "name"} ;permalink
-           name]]])]))
+;      (for [{:keys [permalink name date-published]} (sort-by :date-created posts)] ; permalink
+;        [:article {:itemprop "blogPost" :itemscope "" :itemtype "http://schema.org/BlogPosting"}
+;         [:h3
+;          ;[:span date-published]; datestr
+;          " "
+;          [:a.title {:href permalink :itemprop "name"} ;permalink
+;           name]]])]))
           ;[:iframe  :width "100%" :frameborder 0 :src permalink :height 400]]])]))
 
        ;(common/footer

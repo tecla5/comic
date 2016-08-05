@@ -4,7 +4,10 @@
             [rum.mdl  :as mdl]
             [cljs.reader :as reader]
             [dirac.runtime]
-            [comic.states :as states]))
+            [comic.states :as states]
+            [comic.cards :as cards]
+            [cljs.reader :as reader]))
+
 (dirac.runtime/install!)
 
 (enable-console-print!)
@@ -22,9 +25,10 @@
   (str "Hello from cljs " x "!")) ;? (:clj "clj" :cljs "cljs") " " x "!"))
 
 
-(rum/defc app < rum/reactive  [] ;data-table
-  (js/console.log "home")
+(rum/defc app < rum/reactive  [cards] ;data-table
+  (js/console.log "app" cards)
   [:div
+   (cards/cards cards)
    [:h1 (foo-cljc (:y @app-state))] ;(foo-cljc (:y @app-state))]
    [:div.btn-toolbar
     (mdl/button {:mdl [:fab :colored :ripple] :on-click #(swap! app-state update :y inc) }    (mdl/icon "add"))
@@ -52,7 +56,7 @@
 ;        name]]])
 
   [:h1 (:title (rum/react app-state))]
-  (app)])
+  (app data)])
 
 
 
@@ -63,15 +67,7 @@
   (js/console.log "Starting the app")
   (if-let [edn (.-edn js/window)]
     (rum/mount (app-container (reader/read-string edn)) (el "container")))
-    ;(js/console.log (cljs.reader/read-string edn)))
-  ;(println (read-string))) ;(slurp "js/data.edn"))))
-  ;(js/console.log "edn:" edn)
-  ;(index/add-numbers))
-  ;(.log js/console states/set-data))
-  ;(.log js/console states/mystates)
-  (.log js/console states/sinexport)
-  (.log js/console (states/sinexport)))
-  ;(.log js/console states/data))
+  (.log js/console states/sinexport))
 
 ;(defn start! []
 ;  (js/console.log "Starting the app")
