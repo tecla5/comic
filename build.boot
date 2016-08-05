@@ -88,7 +88,7 @@
 
 
 ; build for markdown css and html
-(deftask build-dev
+(deftask build-blog
     [p prod bool "Build rss, sitemap etc."]
     (comp
           ;;(base)
@@ -104,18 +104,17 @@
           ;;(canonical-url)
           ;;(split-keywords)
           (render :renderer 'comic.post/render) ; blog.views.post/render
-          (collection :renderer 'comic.index/render :page "index.html") ;; blog.views.index/render
+          (collection :renderer 'comic.index/render :page "index.html"))) ;; blog.views.index/render
           ;(collection :renderer 'blog.views.tags/render :page "tags/index.html")
-          (target :dir #{"build"})))
+          ;(target :dir #{"build"})))
 
           ;(collection :renderer 'site.core/page)
 
 ; build for cljs
 (deftask build-js []
   (comp (speak)
-        (cljs)  ; :unified true :source-map true :optimizations :none
+        (cljs)
         (sift :move {#"^js/" "public/js/"})))
-;        (sift :include #{#"^public/js/"})
 
 
 (deftask build
@@ -123,20 +122,24 @@
   []
   (comp
     (rum-mdl)
-    (cljs-devtools) ;; after watch and before cljs/build-dev
-    (build-dev)
+
+    (cljs-devtools) ;; after watch and before cljs/build-blog
+    (build-blog)
     (cljs-repl); before cljs
     (build-js)))
     ;(target :dir #{"build"})))
 
 
 
+
 ;-------------- development
 (deftask development []
-  (task-options! cljs {:optimizations :none :source-map true} ;; :source-map-timestamp true
-                 reload {:on-jsload 'comic.app/init}
-                 serve {:resource-root "public"})
+  (task-options! cljs {:optimizations :none :source-map true} ;; :source-map-timestamp true ; :unified true
+                 reload {:on-jsload 'comic.app/init :asset-path "public"}
+                 serve {:resource-root "public"} ; :dir "target" :port 3000 :port 8080
+                 livereload {:asset-path "public" :filter #"\.(css|html|js)$"})
   identity)
+
 
 (deftask public
   "build and leave on folder"
@@ -146,22 +149,52 @@
     (build)
     (target :dir #{"build"})))
 
-
 (deftask dev
   "build and watch for dev"
   []
   (comp
+    (println "use 'boot dev-blog' or 'boot dev-app'")))
+
+
+;-------------- development blog
+
+
+(deftask dev-blog
+  "build and watch for dev"
+  []
+  (comp
       (development)
-      (watch)
-      (build)
-      (reload) ;; :on-jsload 'frontend.dev/refresh
+      (rum-mdl)
+      (build-js)
+
       (serve); :dir "target" :port 3000 :port 8080
-      (livereload :asset-path "public" :filter #"\.(css|html|js)$")))
+      (watch)
+      (build-blog)
+      (livereload)))
+
+;-------------- development app
+
+(deftask dev-app
+  "build and watch for dev"
+  []
+  (comp
+      (development)
+      (rum-mdl)
+      (build-blog) ;       (rum-mdl)
+
+      (cljs-devtools)
+
+      (watch)
+      (cljs-repl); before cljs
+      (reload) ;; :on-jsload 'frontend.dev/refresh
+      (build-js)
+      (serve)))
+
 
 ;-------------- production
 (deftask production []
   (task-options! cljs {:optimizations :advanced}
-                 build-dev {:prod true}
+                 build-blog {:prod true}
                  ;copy {:output-dir    "dist" :matching       #{#"CNAME$"}})
                  serve {:resource-root "" :port 8080})
   identity)
@@ -171,7 +204,7 @@
   []
   (comp  ; :prod true
       (production)
-      (build-dev)
+      (build-blog)
       (rum-mdl) ;; after css
       (build-js)
       (inject-scripts :scripts #{"ga.js"})
