@@ -24,6 +24,14 @@ open browser
 
     boot build
 
+
+
+### to verify prod
+
+```sh
+boot prod
+```
+
 ## publish:
 
 
@@ -35,6 +43,9 @@ git subtree push --prefix target/public origin gh-pages
 boot dist
 ./deploy.sh
 ```
+
+
+
 <!--
     boot prod
     git add release && git commit -m "Initial dist subtree commit"

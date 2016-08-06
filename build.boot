@@ -204,7 +204,7 @@
 
 ;-------------- production
 (deftask production []
-  (task-options! cljs {:optimizations :advanced}
+  (task-options! cljs {:optimizations :advanced :pretty-print false}
                  build-blog {:prod true}
                  ;copy {:output-dir    "dist" :matching       #{#"CNAME$"}})
                  serve {:resource-root "" :port 8080})

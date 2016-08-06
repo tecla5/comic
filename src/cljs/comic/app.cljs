@@ -44,7 +44,7 @@
 ;; Put the app/game in here
 ;;
 (rum/defc app-container < rum/reactive [data]
-  (js/console.log data)
+  (js/console.log "app-container" data)
  [:div#box
 ;   (for [{:keys [ permalink short-filename date-created]} data] ; permalink
 ;     (.log js/console "here" permalink short-filename date-created)
@@ -65,9 +65,22 @@
 ;; edn definition
 (defn init []
   (js/console.log "Starting the app")
-  (if-let [edn (.-edn js/window)]
-    (rum/mount (app-container (reader/read-string edn)) (el "container")))
-  (.log js/console states/sinexport))
+  ;(def data [
+  ;            {:short-filename "-about", :permalink "/about/"}
+  ;            {:short-filename "-changes", :permalink "/changes/"}])
+  ;(rum/mount (app-container data) (el "container"))
+
+  ;(.log js/console data)
+  ;(js/console.log (.-edn js/window))
+  ;(js/console.log (aget js/window "edn"))
+  (if-let [edn (aget js/window "edn")]
+    (rum/mount (app-container (reader/read-string edn)) (el "container"))))
+
+  ;(.log js/console states/sinexport)
+  ;(.log js/console states/mystates)
+  ;(.log js/console (.-edn js/window ) "hello"))
+
+
 
 ;(defn start! []
 ;  (js/console.log "Starting the app")

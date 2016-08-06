@@ -4,6 +4,7 @@
   (:use [hiccup.page :only (html5 include-css include-js)]
         [hiccup.core :refer [html]]
         [rum.core :as rum]))
+        ;[cljs.core :as cljs]))
         ;[comic.states :as states]))
   ;[blog.dates :refer [datestr]]
   ;[blog.views.common :as common])
@@ -12,15 +13,14 @@
 
 ;;rum/defc
 (rum/defc set-data < rum/static [data]
-  [:script {:type "text/javascript"} (str "var edn = '")
-                       (pr-str data)"';"])
+  [:script {:type "text/javascript"}
+      (str "window['edn']= '" (pr-str data) "';")])
 
 (rum/defc set-data2 < rum/static [data]
   ;(println data)
   ;(spit "resources/js/data.edn" (with-out-str (pr data))))
   (def ^:export data))
   ;(defn ^:export add-numbers [] (data))
-  ;(clj->js  :a 1 :b [1 2 3] :c #{"d" true :e nil})
   ;(defonce app-state (atom {:y 2016}))
   ;(spit "resources/js/data.edn" (with-out-str (pr (sort-by :date-created posts))))
 
@@ -33,7 +33,7 @@
   (def linkposts
     (mapv (defn x[post]
               {:short-filename (get post :short-filename)
-               :permalink (get post :permalink)})              
+               :permalink (get post :permalink)})
          (sort-by :date-created posts)))
   (println linkposts)
 
