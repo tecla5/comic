@@ -67,27 +67,27 @@ return newv;
 rum.cursor.Cursor.prototype.cljs$core$ISwap$_swap_BANG_$arity$2 = (function (this$,f){
 var self__ = this;
 var this$__$1 = this;
-return cljs.core._reset_BANG_(this$__$1,(function (){var G__12378 = cljs.core._deref(this$__$1);
-return (f.cljs$core$IFn$_invoke$arity$1 ? f.cljs$core$IFn$_invoke$arity$1(G__12378) : f.call(null,G__12378));
+return cljs.core._reset_BANG_(this$__$1,(function (){var G__14979 = cljs.core._deref(this$__$1);
+return (f.cljs$core$IFn$_invoke$arity$1 ? f.cljs$core$IFn$_invoke$arity$1(G__14979) : f.call(null,G__14979));
 })());
 });
 
 rum.cursor.Cursor.prototype.cljs$core$ISwap$_swap_BANG_$arity$3 = (function (this$,f,a){
 var self__ = this;
 var this$__$1 = this;
-return cljs.core._reset_BANG_(this$__$1,(function (){var G__12379 = cljs.core._deref(this$__$1);
-var G__12380 = a;
-return (f.cljs$core$IFn$_invoke$arity$2 ? f.cljs$core$IFn$_invoke$arity$2(G__12379,G__12380) : f.call(null,G__12379,G__12380));
+return cljs.core._reset_BANG_(this$__$1,(function (){var G__14980 = cljs.core._deref(this$__$1);
+var G__14981 = a;
+return (f.cljs$core$IFn$_invoke$arity$2 ? f.cljs$core$IFn$_invoke$arity$2(G__14980,G__14981) : f.call(null,G__14980,G__14981));
 })());
 });
 
 rum.cursor.Cursor.prototype.cljs$core$ISwap$_swap_BANG_$arity$4 = (function (this$,f,a,b){
 var self__ = this;
 var this$__$1 = this;
-return cljs.core._reset_BANG_(this$__$1,(function (){var G__12381 = cljs.core._deref(this$__$1);
-var G__12382 = a;
-var G__12383 = b;
-return (f.cljs$core$IFn$_invoke$arity$3 ? f.cljs$core$IFn$_invoke$arity$3(G__12381,G__12382,G__12383) : f.call(null,G__12381,G__12382,G__12383));
+return cljs.core._reset_BANG_(this$__$1,(function (){var G__14982 = cljs.core._deref(this$__$1);
+var G__14983 = a;
+var G__14984 = b;
+return (f.cljs$core$IFn$_invoke$arity$3 ? f.cljs$core$IFn$_invoke$arity$3(G__14982,G__14983,G__14984) : f.call(null,G__14982,G__14983,G__14984));
 })());
 });
 
